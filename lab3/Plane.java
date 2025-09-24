@@ -25,6 +25,7 @@ public class Plane {
         for (int i = 0; i < sortedSeats.length -1; i++) {
             for (int j = 0; j < sortedSeats.length -i - 1; j++) {
                 if (sortedSeats[j].getCustomerID() > sortedSeats[j+1].getCustomerID()) {
+                    //swap the seats using temp
                     PlaneSeat temp = sortedSeats[j];
                     sortedSeats[j] = sortedSeats[j+1];
                     sortedSeats[j+1] = temp;
@@ -35,7 +36,7 @@ public class Plane {
     }
 
     public void showNumEmptySeats() {
-        System.out.println("Number of empty seats: " + numEmptySeat);
+        System.out.println("There are " + numEmptySeat + " empty seats.");
     }
 
     public void showEmptySeats() {
@@ -44,13 +45,13 @@ public class Plane {
 
         for (int i = 0; i < seats.length; i++) {
             PlaneSeat currentSeat = seats[i];
-            if (!currentSeat.isOccupied()) {
-                System.out.println("Seat " +currentSeat.getSeatID());
+            if (!currentSeat.isOccupied()) { //if it is empty
+                System.out.println("Seat " + currentSeat.getSeatID());
                 foundEmpty = true;
             }
         }
 
-        if (!foundEmpty) { //ie foundEmpty = false -> FULL
+        if (!foundEmpty) { //ie foundEmpty is still false -> FULL
             System.out.println("No empty seats available.");
         }
     }
@@ -61,16 +62,16 @@ public class Plane {
         if(bySeatId) { //show by seat ID
             for (PlaneSeat seat : seats) {
                 if (seat.isOccupied()) {
-                    System.out.println("Seat " + seat.getSeatID() + " assigned to Customer " + seat.getCustomerID());
+                    System.out.println("SeatID " + seat.getSeatID() + " assigned to Customer " + seat.getCustomerID());
                 }
             }
 
 
         } else { // show by customer ID
-            PlaneSeat[] sortedSeats = sortSeats();
+            PlaneSeat[] sortedSeats = sortSeats(); //call on the method to create sortedSeats
             for (PlaneSeat seat : sortedSeats) {
                 if (seat.isOccupied()) {
-                    System.out.println("Seat " + seat.getSeatID() + " assigned to Customer " + seat.getCustomerID());
+                    System.out.println("SeatID " + seat.getSeatID() + " assigned to Customer " + seat.getCustomerID());
                 }
             }
         }
@@ -82,13 +83,14 @@ public class Plane {
             return;
         }
 
-        PlaneSeat seat = seats[seatId - 1];
-        if (!seat.isOccupied()) {
-            seat.assign(cust_id);
+        PlaneSeat seat = seats[seatId - 1]; //remember our seatId is from 1-12
+        //if seat is empty -> can assign
+        if (!seat.isOccupied()) { 
+            seat.assign(cust_id); //assign() from Class PlaneSeat
             numEmptySeat--;
-            System.out.println("Seat "+seatId+" assigned to customer "+cust_id);
+            System.out.println("SeatID "+seatId+" assigned to customer "+cust_id);
         } else {
-            System.out.println("Seat " + seatId+ " is already occupied!");
+            System.out.println("SeatID " + seatId+ " is already occupied!");
         }
 
     }
@@ -98,9 +100,9 @@ public class Plane {
         if (seat.isOccupied()) {
             seat.unAssign();
             numEmptySeat++;
-            System.out.println("Seat " + seat_id + " unassigned!");
+            System.out.println("SeatID " + seat_id + " unassigned!");
         } else {
-            System.out.println("Seat " + seat_id + " is already empty!");
+            System.out.println("SeatID " + seat_id + " is already empty!");
         }
     }
 }

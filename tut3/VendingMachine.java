@@ -2,12 +2,13 @@ package tut3;
 import java.util.Scanner;
 
 public class VendingMachine {
+    private Scanner sc = new Scanner(System.in);
     private String[] drinks = {"Beer", "Coke", "Green Tea"};
     private double[] prices = {3.0, 1.0, 5.0};
-    private Scanner sc = new Scanner(System.in);
 
     //constructor
-    public VendingMachine() {}
+    public VendingMachine() {
+    }
     /* using default constructors -> our vending machine will only be able to have the 3 drinks we hardcoded in the selection method
      * make a Drink Class 
      * make the instance variable for the drinks list ie. Drink[] drinks;

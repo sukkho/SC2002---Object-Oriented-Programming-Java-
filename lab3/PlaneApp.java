@@ -15,6 +15,7 @@ public class PlaneApp {
         System.out.println("(6) Remove a seat assignment");
         System.out.println("(7) Exit");
 
+        //using a do-while loop -> we always want it to happen atleast once
         do {
             System.out.print("Enter the number of your choice: ");
             choice = sc.nextInt();
