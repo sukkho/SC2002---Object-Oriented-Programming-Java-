@@ -14,10 +14,11 @@ public class TestPolygon {
 
     public static void main(String[] args) {
         Rectangle rect = new Rectangle("rectangle", 3.0f, 4.0f);
-        printArea(rect);
+        printArea(rect); //static binding
+        rect.printWidthHeight();
 
         Triangle tri = new Triangle("triangle", 3.0f, 4.0f);
-        printArea(tri);
-
+        printArea(tri); //static binding
+        tri.printWidthHeight();
     }
 }
